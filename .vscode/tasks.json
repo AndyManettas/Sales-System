@@ -1,0 +1,8 @@
+{
+    "version": "0.1.0",
+    "command": "chrome",    
+    "windows": {
+        "command": "chrome.exe"
+    },
+    "args": ["index.html"]
+}

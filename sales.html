@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Homepage" />
+    <meta name="keywords" content="PHP, Javascript, HTML5, CSS, XML" />
+    <meta name="author" content="Andy Manettas" />
+    <title>Sales records</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="shortcut icon" type="image/png" href="images/logosmall.png" />
+    <link href="https://fonts.googleapis.com/css?family=Heebo:100,300,400,500,700,800,900" rel="stylesheet">
+</head>
+<body>
+    <header class="header-wrapper">
+        <nav>
+            <ul>
+                <li><a href="index.php">Overview</a></li>
+                <li><a href="sales.php">Sales records</a></li>
+                <li><a href="inventory.php">Inventory</a></li>
+                <li><a href="settings.php">Settings</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h2>Sales record</h2>
+    <p>Add sales record</p>
+    <form>
+        <!-- Add action method later for php -->
+        <!-- Sales Record ID and Sales Item ID are different. Record ID represents each transaction/record. Record ID can be handled by the database -->
+        Item ID:<br>
+        <input type="text" name="salesItemId"><br>
+        Item name:<br>
+        <input type="text" name="salesItemName"><br>
+        Unit Price:<br>
+        <input type="number" name="salesItemUnitPrice" min="0.00" max="10000.00" step="0.01" /><br>
+        Quantity:<br>
+        <input type="number" name="salesItemQuantity" min="1" max="999"><br>
+        Total price: <!-- JS performs calculation --><br>
+        <input type="submit" value="Submit"><br>
+    </form>
+</body>
+</html>

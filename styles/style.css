@@ -1,0 +1,139 @@
+/*
+filename: style.css
+author: Andy Manettas
+created: 23/03/2019
+last modified: 02/04/2019
+description: index.html, jobs.html, apply.html, about.html, enhancements.html
+*/
+
+
+/*-------     All Pages     ---------*/
+
+/* Acts as a container for the content */
+.wrapper {
+    padding: 0 10%;
+}
+
+/* Stopped the page from being horizontally scrollable */
+html {
+    overflow-x: hidden;
+}
+
+body {
+    background-color: #F5FAFD;
+}
+
+* {
+    font-family: 'Heebo', sans-serif;
+    color: #43414E;
+    margin: 0;
+    padding: 0;
+}
+
+a:link {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:visited {
+    text-decoration: none;
+    color: inherit
+}
+
+.header-wrapper {
+    padding: 0 10%;
+    background-color: white;
+}
+
+header {
+    height: 5em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+}
+
+header nav ul li,
+header a {
+    color: #43414E;
+}
+
+header nav ul li::before {
+    background-color: #43414E;
+}
+
+nav {
+    order: 1;
+    width: 33rem;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+    margin: 0;
+}
+
+/* underlines the nav menu on hover from this point ... */
+nav ul li {
+    position: relative;
+}
+
+nav ul li::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #FFF;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+nav ul li:hover::before {
+    visibility: visible;
+    width: 100%;
+}
+
+.wrapper h1 {
+    margin: 20px 0 10px 0;
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: [col1-start] auto  [col2-start] auto  [col3-start] auto [col3-end];
+    grid-template-rows: [row1-start] auto [row2-start] auto [row2-end];
+    background-color: #F5FAFD;
+    grid-gap: 20px;
+    height: 550px;
+}
+
+.grid-item {
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 150%;
+}
+
+.a {
+    grid-column: col1-start / col3-start;
+    grid-row: row1-start ;
+}
+.b {
+    grid-column: col3-start ;
+    grid-row: row1-start / row2-end;
+}
+.c {
+    grid-column: col1-start;
+    grid-row: row2-start ;
+}
+.d {
+    grid-column: col2-start ;
+    grid-row: row2-start ;
+}
