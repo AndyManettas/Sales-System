@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Homepage" />
+    <meta name="keywords" content="PHP, Javascript, HTML5, CSS, XML" />
+    <meta name="author" content="Andy Manettas" />
+
+    <title>Inventory</title>
+
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="shortcut icon" type="image/png" href="images/logosmall.png" />
+    <link href="https://fonts.googleapis.com/css?family=Heebo:100,300,400,500,700,800,900" rel="stylesheet">
+</head>
+
+<body>
+    <header class="header-wrapper">
+        <nav>
+            <ul>
+                <li><a href="index.php">Overview</a></li>
+                <li><a href="sales.php">Sales records</a></li>
+                <li><a href="inventory.php">Inventory</a></li>
+                <li><a href="settings.php">Settings</a></li>
+            </ul>
+        </nav>
+    </header>
+<h2>Supplies List</h2>
+<p>Adding Supply</p>
+<form>
+    <div>
+        <label for="productname">Product Name:</label>
+        <input type="text" name="productname" id="productname" required>
+    </div>
+    <div>
+        <label for="description">Description:</label><br>
+        <textarea name="description" id="description"></textarea>
+    </div>
+    <div>
+        <label for="quantity">Quantity:</label>
+        <input type="number" name="quantity" id="quantity" min="1" max="999" required>
+    </div>
+    <div>
+        <label for="orderdate">Order Date:</label>
+        <input type="date" name="orderdate" id="orderdate" required>
+    </div>
+    <button type="reset">Reset</button>
+    <button type="submit">Submit</button>
+</form>
+</body>
+
+</html>
