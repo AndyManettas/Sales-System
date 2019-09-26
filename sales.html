@@ -4,8 +4,9 @@
     <meta charset="utf-8" />
     <meta name="description" content="Homepage" />
     <meta name="keywords" content="PHP, Javascript, HTML5, CSS, XML" />
-    <meta name="author" content="Andy Manettas" />
+    <meta name="author" content="Saber Ali" />
     <title>Sales records</title>
+	<script src="scripts/saleRecordApplication.js"></script>
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="shortcut icon" type="image/png" href="images/logosmall.png" />
     <link href="https://fonts.googleapis.com/css?family=Heebo:100,300,400,500,700,800,900" rel="stylesheet">
@@ -27,15 +28,16 @@
         <!-- Add action method later for php -->
         <!-- Sales Record ID and Sales Item ID are different. Record ID represents each transaction/record. Record ID can be handled by the database -->
         Item ID:<br>
-        <input type="text" name="salesItemId"><br>
+        <input type="text" id="salesItemId"><br>
         Item name:<br>
-        <input type="text" name="salesItemName"><br>
+        <input type="text" id="salesItemName"><br>
         Unit Price:<br>
-        <input type="number" name="salesItemUnitPrice" min="0.00" max="10000.00" step="0.01" /><br>
+        <input type="number" id="salesItemUnitPrice" min="0.00" max="10000.00" step="0.01" placeholder="0.00"/><br>
         Quantity:<br>
-        <input type="number" name="salesItemQuantity" min="1" max="999"><br>
-        Total price: <!-- JS performs calculation --><br>
-        <input type="submit" value="Submit"><br>
+        <input type="number" id="salesItemQuantity" min="1" max="999" placeholder="0"><br>
+        Total price: $<span id="salesTotalPrice"></span><br> <!-- JS performs calculation for total price -->
+	
+        <input type="submit" value="Submit"><br> <!-- Does nothing for now -->
     </form>
 </body>
 </html>
