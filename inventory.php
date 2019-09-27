@@ -41,9 +41,9 @@
 					echo "<p> There is no data to display</p>";
 				else {
 					echo "<table border=1>";
-					echo "<tr><th>Product ID</th><th>Product name</th><th>Price</th><th>Qty</th><th>Expired Date</th></tr>";
+					echo "<tr><th>Product ID</th><th>Product name</th><th>Price</th><th>Qty</th></tr>";
 					while ($row = mysqli_fetch_array($result)) {
-						echo "<tr><td>" . $row[0] . "</td><td>" . $row[1] . "</td><td>" . $row[2] . "</td><td>" . $row[3] . "</td><td>" . $row[4] . "</td></tr>";
+						echo "<tr><td>" . $row[0] . "</td><td>" . $row[1] . "</td><td>" . $row[2] . "</td><td>" . $row[3] . "</td></tr>";
 					}
 					echo "</table>";
 				}

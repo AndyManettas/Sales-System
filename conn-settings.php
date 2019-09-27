@@ -1,7 +1,7 @@
 <?php
-	$host = "feenix-mariadb.swin.edu.au";
-	$user = "s101978603";
-	$pwd = "280298";
-	$dbname = "s101978603_db";
+	$host = "localhost";
+	$user = "id11027883_dp2salesforce";
+	$pwd = "salesforce88";
+	$dbname = "id11027883_pharmacy";
 	$conn = @mysqli_connect($host,$user,$pwd,$dbname);
 ?>
