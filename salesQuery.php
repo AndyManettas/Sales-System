@@ -80,10 +80,12 @@
 					$insert_sales_record_result = mysqli_query($conn, $insert_sales_record_query);
 					
 					if ($new_sales_quantity > $old_sales_quantity) {
-						$update_product_quantity_query = "UPDATE products SET quantity=quantity-'$new_sales_quantity' WHERE product_id='$sales_item_id'";
+						$quantity_difference = $new_sales_quantity - $old_sales_quantity;
+						$update_product_quantity_query = "UPDATE products SET quantity=quantity-'$quantity_difference' WHERE product_id='$sales_item_id'";
 						$update_product_quantity_result = mysqli_query($conn, $update_product_quantity_query);
 					} else {
-						$update_product_quantity_query = "UPDATE products SET quantity=quantity+'$new_sales_quantity' WHERE product_id='$sales_item_id'";
+						$quantity_difference = $old_sales_quantity - $new_sales_quantity;
+						$update_product_quantity_query = "UPDATE products SET quantity=quantity+'$quantity_difference' WHERE product_id='$sales_item_id'";
 						$update_product_quantity_result = mysqli_query($conn, $update_product_quantity_query);
 					}
 					

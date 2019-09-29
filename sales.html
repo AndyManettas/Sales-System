@@ -22,22 +22,49 @@
             </ul>
         </nav>
     </header>
-    <h2>Sales record</h2>
-    <p>Add sales record</p>
-    <form>
-        <!-- Add action method later for php -->
+    <h2>Sales record management</h2>
+    <p>Add a sales record</p>
+	<form id="salesFindIdForm" method="post" action="salesQuery.php">
         <!-- Sales Record ID and Sales Item ID are different. Record ID represents each transaction/record. Record ID can be handled by the database -->
-        Item ID:<br>
-        <input type="text" id="salesItemId"><br>
-        Item name:<br>
-        <input type="text" id="salesItemName"><br>
-        Unit Price:<br>
-        <input type="number" id="salesItemUnitPrice" min="0.00" max="10000.00" step="0.01" placeholder="0.00"/><br>
-        Quantity:<br>
-        <input type="number" id="salesItemQuantity" min="1" max="999" placeholder="0"><br>
-        Total price: $<span id="salesTotalPrice"></span><br> <!-- JS performs calculation for total price -->
+		Item ID:<br>
+        <input type="text" id="addSalesItemId"><br>
+		<input type="submit" value="Find"><br>
+	</form><br>
 	
-        <input type="submit" value="Submit"><br> <!-- Does nothing for now -->
-    </form>
+	<form id="salesAddForm" method="post" action="salesQuery.php">
+        Item name: <span id="addSalesItemName"></span><br>
+        Unit price: $<span id="addSalesItemUnitPrice"></span><br>
+        Quantity:<br>
+        <input type="number" id="addSalesItemQuantity" min="1" max="999" placeholder="0"><br>
+        Total price: $<span id="addSalesTotalPrice"></span><br> <!-- JS performs calculation for total price -->
+	
+        <input type="submit" value="Add"><br> <!-- Does nothing for now -->
+    </form><br>
+	
+	<p>Edit a sales record</p>
+	<form id="salesEditForm" method="post" action="salesQuery.php">
+        <!-- Edit/Delete action method later for php -->
+		Sales ID:<br>
+		<input type="text" id="editSalesRecordId"><br>
+        Item ID:<br>
+        <input type="text" id="editSalesItemId"><br>
+        Item name:<br>
+        <input type="text" id="editSalesItemName"><br>
+        Unit Price:<br>
+        <input type="number" id="editSalesItemUnitPrice" min="0.00" max="10000.00" step="0.01" placeholder="0.00"/><br>
+        Quantity:<br>
+        <input type="number" id="editSalesItemQuantity" min="1" max="999" placeholder="0"><br>
+        Total price: $<span id="editSalesTotalPrice"></span><br> <!-- JS performs calculation for total price -->
+	
+        <input type="submit" value="Edit"><br> <!-- Does nothing for now -->
+    </form><br>
+	
+	<p>Delete a sales record</p>
+	<form id="salesDeleteForm" method="post" action="salesQuery.php">
+        <!-- Edit/Delete action method later for php -->
+        Sales ID:<br>
+        <input type="text" id="deleteSalesRecordId"><br>
+        <input type="submit" value="Delete"><br> <!-- Does nothing for now -->
+    </form><br>
 </body>
 </html>
