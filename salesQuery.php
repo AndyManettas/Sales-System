@@ -49,7 +49,7 @@
 					$insert_sales_record_result = mysqli_query($conn, $insert_sales_record_query);
 					$update_product_quantity_query = "UPDATE products SET quantity=quantity-'$sales_quantity' WHERE product_id='$sales_item_id'";
 					$update_product_quantity_result = mysqli_query($conn, $update_product_quantity_query);
-					if (!$insert_sales_record_result || $update_product_quantity_result)
+					if (!$insert_sales_record_result || !$update_product_quantity_result)
 					{
 						echo("Error description: " . mysqli_error($conn));
 					}
@@ -90,7 +90,7 @@
 					}
 					
 					
-					if (!$insert_sales_record_result || $update_product_quantity_result)
+					if (!$insert_sales_record_result || !$update_product_quantity_result)
 					{
 						echo("Error description: " . mysqli_error($conn));
 					}
