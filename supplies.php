@@ -1,20 +1,22 @@
-<!--Edit a supply-->
-<?php
- if (isset($_GET['edit']))
- {
-     $id = $_GET['edit'];
-     $update = true;
-     $record = mysqli_query($conn, "SELECT * FROM supply WHERE id=$id");
+<?php include('suppliesManage.php'); 
 
-     if (count($record) == 1)
-     {
-         $n = mysqli_fetch_array($record);
-         $productName = $n['productName'];
-         $quantity = $n['quantity'];
-         $expiryDate = $n['expiryDate'];
-     }
- }
+require_once("conn-settings.php");
+//Edit a product
+if (isset($_GET['edit']))
+{
+    $id = $_GET['edit'];
+    $update = true;
+    $record = mysqli_query($conn, "SELECT * FROM products WHERE id=$id");
+
+        $n = mysqli_fetch_assoc($record);
+        $productName = $n['productName'];
+        $quantity = $n['quantity'];
+        $price = $n['price'];
+        $id = $n['id'];
+    
+}
 ?>
+
 
 <!DOCTYPE html>
 
@@ -45,9 +47,46 @@
         </nav>
     </header>
 <h2>Supplies List</h2>
+    <!--Display comfimation message-->
+    <?php if (isset($_SESSION['message'])): ?>
+        <div class='message'>
+            <?php
+                echo $_SESSION['message'];
+                unset($_SESSION['message']);
+            ?>
+        </div>
+<?php endif ?>
+    <!--Display Result onto Table for testing-->
+    <?php $result = mysqli_query($conn, "SELECT * FROM products"); ?>
+    <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th colspan="2">Action</th>
+                </tr>
+            </thead>
+
+            <?php while ($row = mysqli_fetch_array($result)) 
+            { ?>
+                <tr>
+                    <td><?php echo $row['product_id']; ?></td>
+                    <td><?php echo $row['product_name']; ?></td>
+                    <td><?php echo $row['quantity']; ?></td>
+                    <td><?php echo $row['price']; ?></td>
+                    <td>
+                        <a href="supplies.php?edit=<? echo $row['product_id']; ?>" class="edit_btn" >Edit</a>
+                    </td>
+                    <td>
+                        <a href="suppliesManage.php?delete=<? echo $row['product_id']; ?>" class="del_btn" >Delete</a>
+                    </td>
+            <?php }?>
+    </table>
+
 <p>Adding Supply</p>
-<form method="post" action="conn-setting">
-    <input type="hidden" name="id" value="<?php echo $id; ?>">
+<form class = productform method="post" action="suppliesManage.php">
     <div class="input">
         <label for="productName">Product Name:</label>
         <input type="text" name="productName" id="productName" value= "<?php echo $productName; ?>" required>
@@ -57,17 +96,11 @@
         <input type="number" name="quantity" id="quantity" min="1" max="999" value= "<?php echo $quantity; ?>" required>
     </div>
     <div class="input">
-        <label for="expirydate">Expiry Date:</label>
-        <input type="date" name="expirydate" id="expirydate" value= "<?php echo $expiryDate; ?>" required>
+        <label for="price">Price:</label>
+        <input type="number" name="price" id="price" value= "<?php echo $price; ?>" required>
     </div>
-    
-    <?php if ($update == true): ?>
-        <button class="btn" type="submit" name="update">Update</button>
-    <?php else: ?>
         <button class="btn" type="submit" name="submit">Submit</button>
-    <?php endif ?>
 </form>
-
 </body>
 
 </html>
