@@ -48,6 +48,8 @@ while ($day <= 28) {
     $prev = $day;
     $day = $day + 7;
 }
+
+include 'prediction.php';
 ?>
 
 <!DOCTYPE html>
@@ -220,7 +222,7 @@ while ($day <= 28) {
                   <div class="row">
                     <div class="col">
                       <h5 class="card-title text-uppercase text-muted mb-0">Sales Prediction</h5>
-                      <span class="h2 font-weight-bold mb-0">$774</span>
+                      <span class="h2 font-weight-bold mb-0"><?php echo "$". $sum ?></span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
