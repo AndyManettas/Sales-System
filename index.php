@@ -1,6 +1,25 @@
 <?php
 require_once('settings.php');
 
+session_start();
+
+if (!isset($_SESSION['login_user'])) {
+    header("Location: login.php");
+    die();
+}
+
+// storing logged in user from session
+$user_check = $_SESSION['login_user'];
+// query to check if user exists in database
+$session_query = "SELECT * FROM users WHERE username='$user_check'";
+// performing query
+$session_result = @mysqli_query($conn, $session_query);
+// fetching result row
+$row = mysqli_fetch_assoc($session_result);
+// storing value from user column into variable
+$login_session = $row['username'];
+// returning user to login page and terminating script
+
 $no_sales_query = "SELECT purchase_date, SUM(total_price) as 'total_price' FROM records, (SELECT DATE_ADD(CURDATE(), INTERVAL - WEEKDAY(CURDATE()) DAY) as START_DATE) as start_date WHERE purchase_date BETWEEN start_date.START_DATE AND start_date.START_DATE + INTERVAL 7 DAY GROUP BY purchase_date";
 $no_sales_result = mysqli_query($conn, $no_sales_query);
 
@@ -107,7 +126,7 @@ while ($day <= 28) {
               <span>Support</span>
             </a>
             <div class="dropdown-divider"></div>
-            <a href="#!" class="dropdown-item">
+            <a href="logout.php" class="dropdown-item">
               <i class="ni ni-user-run"></i>
               <span>Logout</span>
             </a>
@@ -179,7 +198,7 @@ while ($day <= 28) {
                 <span>Support</span>
               </a>
               <div class="dropdown-divider"></div>
-              <a href="#!" class="dropdown-item">
+              <a href="logout.php" class="dropdown-item">
                 <i class="ni ni-user-run"></i>
                 <span>Logout</span>
               </a>
@@ -200,8 +219,8 @@ while ($day <= 28) {
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
-                      <span class="h2 font-weight-bold mb-0">774</span>
+                      <h5 class="card-title text-uppercase text-muted mb-0">Sales Prediction</h5>
+                      <span class="h2 font-weight-bold mb-0">$774</span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -211,28 +230,7 @@ while ($day <= 28) {
                   </div>
                   <p class="mt-3 mb-0 text-muted text-sm">
                     <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                    <span class="text-nowrap">Since last month</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-6">
-              <div class="card card-stats mb-4 mb-xl-0">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Customers</h5>
-                      <span class="h2 font-weight-bold mb-0">301</span>
-                    </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
-                        <i class="fas fa-chart-pie"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="mt-3 mb-0 text-muted text-sm">
-                    <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>
-                    <span class="text-nowrap">Since last week</span>
+                    <span class="text-nowrap">Till next week</span>
                   </p>
                 </div>
               </div>
@@ -246,6 +244,27 @@ while ($day <= 28) {
                       <span class="h2 font-weight-bold mb-0">115</span>
                     </div>
                     <div class="col-auto">
+                      <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                        <i class="fas fa-chart-pie"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-3 mb-0 text-muted text-sm">
+                    <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>
+                    <span class="text-nowrap">Since yesterday</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6">
+              <div class="card card-stats mb-4 mb-xl-0">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5 class="card-title text-uppercase text-muted mb-0">Customers</h5>
+                      <span class="h2 font-weight-bold mb-0">301</span>
+                    </div>
+                    <div class="col-auto">
                       <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
                         <i class="fas fa-users"></i>
                       </div>
@@ -253,7 +272,7 @@ while ($day <= 28) {
                   </div>
                   <p class="mt-3 mb-0 text-muted text-sm">
                     <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
-                    <span class="text-nowrap">Since yesterday</span>
+                    <span class="text-nowrap">Since last week</span>
                   </p>
                 </div>
               </div>
