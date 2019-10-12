@@ -25,6 +25,7 @@
 
             if ($count == 1) {
                 $_SESSION['login_user'] = $username;
+                $_SESSION['status'] = 1;
                 header("location:index.php?user=$username");
             } else {
                 $errm = "Invalid password";

@@ -7,16 +7,19 @@ $no_sales_rows = mysqli_num_rows($no_sales_result);
 $no_predicted_rows = 7 - $no_sales_rows;
 
 $sum = 0;
-$temp = array();
+$temp3 = array();
 
 while ($array = mysqli_fetch_assoc($no_sales_result)) {
-  array_push($temp, $array['total_price']);
+  array_push($temp3, $array['total_price']);
   }
  
-$mid = (max($temp) + min($temp)) / 2;
+$mid = (max($temp3) + min($temp3)) / 2;
 for ($i = 0; $i < $no_predicted_rows; $i++) {
     $predict_sales = rand($mid - 500, $mid + 500);
-    array_push($temp, $predict_sales);
+    array_push($temp3, $predict_sales);
 }
 
-$sum = array_sum($temp);
+$sum = array_sum($temp3);
+
+$_SESSION['sum'] = $sum;
+?>

@@ -49,7 +49,10 @@ while ($day <= 28) {
     $day = $day + 7;
 }
 
-include 'prediction.php';
+if ($_SESSION['status'] == 1) {
+    include 'prediction.php';
+    $_SESSION['status'] = 0;
+}
 ?>
 
 <!DOCTYPE html>
@@ -222,7 +225,7 @@ include 'prediction.php';
                   <div class="row">
                     <div class="col">
                       <h5 class="card-title text-uppercase text-muted mb-0">Sales Prediction</h5>
-                      <span class="h2 font-weight-bold mb-0"><?php echo "$". $sum ?></span>
+                      <span class="h2 font-weight-bold mb-0"><?php echo "$". $_SESSION['sum'] ?></span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
